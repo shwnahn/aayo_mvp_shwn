@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} menu {% endblock %}
+
+{% block content %}
+<h1>메뉴 선택하기</h1>
+<h2>{{ room.cafe.name }}</h2>
+<h2>{{ account.username }}님의 주문</h2>
+<form method="post">
+    {% csrf_token %}
+    <h3>Menu Items</h3>
+    <ul>
+        {% for item in menu_items %}
+            <li>
+                <label>
+                    <input type="radio" name="selected_menu" value="{{ item.name }}" required>
+                    <img src="{{ item.image_url }}" alt="{{ item.name }}" style="width:100px;height:100px;">
+                    {{ item.name }}
+                </label>
+            </li>
+        {% endfor %}
+    </ul>
+    <button type="submit">Order</button>
+</form>
+{% endblock %}
+
+{% block extra %}
+{% endblock %}

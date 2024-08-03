@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} NewRoom {% endblock %}
+
+{% block content %}
+<h1>방생성하기!</h1>
+
+<form method="post">
+    {% csrf_token %}
+    <label for="name">방 이름:</label>
+    <input type="text" name="name" id="name" required>
+    
+    <label for="cafe">Select Cafe:</label>
+    <select name="cafe" id="cafe">
+        {% for cafe in cafes %}
+            <option value="{{ cafe.id }}">{{ cafe.name }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Create Room</button>
+</form>
+{% endblock %}
+
+{% block extra %}
+{% endblock %}

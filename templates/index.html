@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} 메인페이지 {% endblock %}
+
+{% block content %}
+<h1>안녕!!!! 랜딩페이지!</h1>
+<a href="{% url 'aayo:create_room' %}">방 만들기</a>
+{% endblock %}
+
+{% block extra %}
+{% endblock %}

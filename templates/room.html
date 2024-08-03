@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Room Detail {% endblock %}
+
+{% block content %}
+<h1>{{ room.name }}</h1>
+<h3>카페:{{ room.cafe.name }}</h3>
+<p>링크를 공유하세요! <a href="{{ request.build_absolute_uri }}">{{ request.build_absolute_uri }}</a></p>
+<a href="{% url 'aayo:login_room' room.unique_link %}">메뉴 선택하기</a>
+{% if orders %}
+    <div class="order-summary">
+        <h2>주문 요약</h2>
+        <ul>
+            {% for order in orders %}
+                <li>{{ order.user.username }}: {{ order.selected_menu }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
+{% endblock %}
+
+{% block extra %}
+{% endblock %}
